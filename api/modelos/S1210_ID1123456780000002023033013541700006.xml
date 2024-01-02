@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtPgtos/v_S_01_01_00">
+  <evtPgtos Id="ID1123456780000002023033013541700006">
+    <ideEvento>
+      <indRetif>1</indRetif>
+      <perApur>2023-02</perApur>
+      <tpAmb>2</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>SENIORGPFP581369</verProc>
+    </ideEvento>
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <ideBenef>
+      <cpfBenef>03313635857</cpfBenef>
+      <infoPgto>
+        <dtPgto>2023-02-05</dtPgto>
+        <tpPgto>1</tpPgto>
+        <perRef>2023-01</perRef>
+        <ideDmDev>DEMONSTR0365A32</ideDmDev>
+        <vrLiq>1556.27</vrLiq>
+      </infoPgto>
+    </ideBenef>
+  </evtPgtos>
+</eSocial>

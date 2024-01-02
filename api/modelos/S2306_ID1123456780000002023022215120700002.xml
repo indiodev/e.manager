@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtTSVAltContr/v_S_01_00_00">
+  <evtTSVAltContr Id="ID1123456780000002023022215120700002">
+    <ideEvento>
+      <indRetif>1</indRetif>
+      <tpAmb>2</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>SENIORGPFP581369</verProc>
+    </ideEvento>
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <ideTrabSemVinculo>
+      <cpfTrab>00476687926</cpfTrab>
+      <matricula>SEDEMONSTR00000000000000000001</matricula>
+    </ideTrabSemVinculo>
+    <infoTSVAlteracao>
+      <dtAlteracao>2023-02-01</dtAlteracao>
+      <infoComplementares>
+        <cargoFuncao>
+          <nmCargo>Diretor Presidente</nmCargo>
+          <CBOCargo>123105</CBOCargo>
+        </cargoFuncao>
+        <remuneracao>
+          <vrSalFx>2512.60</vrSalFx>
+          <undSalFixo>5</undSalFixo>
+        </remuneracao>
+      </infoComplementares>
+    </infoTSVAlteracao>
+  </evtTSVAltContr>
+</eSocial>

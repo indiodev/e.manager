@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtAdmissao/v_S_01_00_00">
+  <evtAdmissao Id="ID1123456780000002023013117333100001">
+    <ideEvento>
+      <indRetif>1</indRetif>
+      <tpAmb>2</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>SENIORGPFP581369</verProc>
+    </ideEvento>
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <trabalhador>
+      <cpfTrab>03313635857</cpfTrab>
+      <nmTrab>Rafael Marques</nmTrab>
+      <sexo>M</sexo>
+      <racaCor>1</racaCor>
+      <estCiv>1</estCiv>
+      <grauInstr>08</grauInstr>
+      <nascimento>
+        <dtNascto>1983-06-03</dtNascto>
+        <paisNascto>105</paisNascto>
+        <paisNac>105</paisNac>
+      </nascimento>
+      <endereco>
+        <brasil>
+          <tpLograd>R</tpLograd>
+          <dscLograd>Rua Antonio Haffner</dscLograd>
+          <nrLograd>407</nrLograd>
+          <complemento>Apto 302</complemento>
+          <bairro>CENTRO</bairro>
+          <cep>89032600</cep>
+          <codMunic>4202404</codMunic>
+          <uf>SC</uf>
+        </brasil>
+      </endereco>
+      <contato>
+        <fonePrinc>4733392222</fonePrinc>
+      </contato>
+    </trabalhador>
+    <vinculo>
+      <matricula>SEDEMONSTR00000000000000000017</matricula>
+      <tpRegTrab>1</tpRegTrab>
+      <tpRegPrev>1</tpRegPrev>
+      <cadIni>S</cadIni>
+      <infoRegimeTrab>
+        <infoCeletista>
+          <dtAdm>2015-01-01</dtAdm>
+          <tpAdmissao>1</tpAdmissao>
+          <indAdmissao>1</indAdmissao>
+          <tpRegJor>1</tpRegJor>
+          <natAtividade>1</natAtividade>
+          <dtBase>01</dtBase>
+          <cnpjSindCategProf>84437276000121</cnpjSindCategProf>
+        </infoCeletista>
+      </infoRegimeTrab>
+      <infoContrato>
+        <nmCargo>Técnico Segurança Trabalh</nmCargo>
+        <CBOCargo>351605</CBOCargo>
+        <codCateg>101</codCateg>
+        <remuneracao>
+          <vrSalFx>1565.00</vrSalFx>
+          <undSalFixo>5</undSalFixo>
+        </remuneracao>
+        <duracao>
+          <tpContr>1</tpContr>
+        </duracao>
+        <localTrabalho>
+          <localTrabGeral>
+            <tpInsc>1</tpInsc>
+            <nrInsc>12345678010158</nrInsc>
+          </localTrabGeral>
+        </localTrabalho>
+        <horContratual>
+          <qtdHrsSem>44.00</qtdHrsSem>
+          <tpJornada>4</tpJornada>
+          <tmpParc>0</tmpParc>
+          <horNoturno>N</horNoturno>
+          <dscJorn>De 2ª a sábado, das 5:00 às 9:00 e das 10:00 às 14:00</dscJorn>
+        </horContratual>
+      </infoContrato>
+    </vinculo>
+  </evtAdmissao>
+</eSocial>

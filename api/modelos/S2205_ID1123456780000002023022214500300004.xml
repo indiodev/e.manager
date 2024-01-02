@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtAltCadastral/v_S_01_00_00">
+  <evtAltCadastral Id="ID1123456780000002023022214500300004">
+    <ideEvento>
+      <indRetif>1</indRetif>
+      <tpAmb>2</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>SENIORGPFP581369</verProc>
+    </ideEvento>
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <ideTrabalhador>
+      <cpfTrab>37164759049</cpfTrab>
+    </ideTrabalhador>
+    <alteracao>
+      <dtAlteracao>2023-02-01</dtAlteracao>
+      <dadosTrabalhador>
+        <nmTrab>Paulo Arantes da Silva</nmTrab>
+        <sexo>M</sexo>
+        <racaCor>1</racaCor>
+        <estCiv>2</estCiv>
+        <grauInstr>08</grauInstr>
+        <paisNac>105</paisNac>
+        <endereco>
+          <brasil>
+            <tpLograd>R</tpLograd>
+            <dscLograd>Rua das Madeiras</dscLograd>
+            <nrLograd>56564</nrLograd>
+            <bairro>CENTRO</bairro>
+            <cep>89052320</cep>
+            <codMunic>4202404</codMunic>
+            <uf>SC</uf>
+          </brasil>
+        </endereco>
+        <contato>
+          <fonePrinc>4733392222</fonePrinc>
+          <emailPrinc>paulo.arantes@email.com.br</emailPrinc>
+        </contato>
+      </dadosTrabalhador>
+    </alteracao>
+  </evtAltCadastral>
+</eSocial>

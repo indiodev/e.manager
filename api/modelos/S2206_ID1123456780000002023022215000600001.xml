@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtAltContratual/v_S_01_00_00">
+  <evtAltContratual Id="ID1123456780000002023022215000600001">
+    <ideEvento>
+      <indRetif>1</indRetif>
+      <tpAmb>2</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>SENIORGPFP581369</verProc>
+    </ideEvento>
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <ideVinculo>
+      <cpfTrab>37874381068</cpfTrab>
+      <matricula>SEDEMONSTR00000000000000000043</matricula>
+    </ideVinculo>
+    <altContratual>
+      <dtAlteracao>2023-02-01</dtAlteracao>
+      <vinculo>
+        <tpRegPrev>1</tpRegPrev>
+        <infoRegimeTrab>
+          <infoCeletista>
+            <tpRegJor>1</tpRegJor>
+            <natAtividade>1</natAtividade>
+            <dtBase>11</dtBase>
+            <cnpjSindCategProf>52168721000109</cnpjSindCategProf>
+          </infoCeletista>
+        </infoRegimeTrab>
+        <infoContrato>
+          <nmCargo>Diretor Administrativo</nmCargo>
+          <CBOCargo>123105</CBOCargo>
+          <codCateg>101</codCateg>
+          <remuneracao>
+            <vrSalFx>1500.00</vrSalFx>
+            <undSalFixo>5</undSalFixo>
+          </remuneracao>
+          <duracao>
+            <tpContr>1</tpContr>
+          </duracao>
+          <localTrabalho>
+            <localTrabGeral>
+              <tpInsc>1</tpInsc>
+              <nrInsc>12345678010158</nrInsc>
+            </localTrabGeral>
+          </localTrabalho>
+          <horContratual>
+            <qtdHrsSem>44.00</qtdHrsSem>
+            <tpJornada>4</tpJornada>
+            <tmpParc>0</tmpParc>
+            <horNoturno>N</horNoturno>
+            <dscJorn>De 2ª a 6ª feira, das 8:00 às 12:00 e das 13:30 às 18:00</dscJorn>
+          </horContratual>
+        </infoContrato>
+      </vinculo>
+    </altContratual>
+  </evtAltContratual>
+</eSocial>

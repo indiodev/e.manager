@@ -1,0 +1,12 @@
+- [x] Deve ser possível mapear nós do leiaute a partir de XML
+- [x] Deve ser possível criar leiaute a partir do mapeamento de XML
+- [x] Deve ser possível extrair dados do leiaute a partir do mapeamento de XML
+- [x] Deve ser possível, para cada leiaute mapeado, criar um schema.
+- [x] Deve ser possível, para cada nó do leiaute, criar um tabela e suas colunas (nós filhos) no schema
+- [x] Deve ser possível ter uma Lista paginada de leiautes
+- [x] Deve ser possível, todo leiaute deve ter uma versão
+- [x] Deve ser possível filtrar leiaute por nome e versão
+- [x] Deve ser possível listar as versões
+- [ ] Deve ser possível ter uma lista paginada de todos os registros de um schema (leiaute)
+- [ ] Deve ser possível extrair dados de 1 a N XML's
+- [ ] Deve ser possível um administrador se autenticar

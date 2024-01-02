@@ -1,0 +1,95 @@
+@hostname=localhost:3333
+@prefix=dev
+@base_url={{hostname}}/{{prefix}}
+
+### @name list_versions
+GET http://{{base_url}}/versions
+
+### @name create_version
+POST  http://{{base_url}}/versions
+Content-Type: application/json
+
+{
+  "name": "Novo leiaute de testes",
+  "prefix": "V11",
+  "description": "",
+  "year": 2022
+}
+
+### @name schema_mapping
+POST http://{{base_url}}/schemas/mapping
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"
+
+file
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="teste.xml"
+Content-Type: text/xml
+
+< ./modelos/teste.xml
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### @name schema_generate
+POST http://{{base_url}}/schemas/generate
+Content-Type: application/json
+
+{
+  "leiaute_id": "36401fb4-84ab-4400-a01e-ca8be56e1fb2",
+  "nodes": [{"node":"?xml","type":"object","children":[{"name":"@_version","type":"string","value":"1.0"},{"name":"@_encoding","type":"string","value":"UTF-8"}]},{"node":"eSocial","type":"object","children":[{"name":"@_xmlns","type":"string","value":"http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_00_00"}]},{"node":"evtRemun","type":"object","children":[{"name":"@_Id","type":"string","value":"ID1123456780000002023022215193900007"}]},{"node":"ideEvento","type":"object","children":[{"name":"indRetif","type":"number","value":1},{"name":"indApuracao","type":"number","value":1},{"name":"perApur","type":"string","value":"2023-01"},{"name":"tpAmb","type":"number","value":2},{"name":"procEmi","type":"number","value":1},{"name":"verProc","type":"string","value":"SENIORGPFP581369"}]},{"node":"ideEmpregador","type":"object","children":[{"name":"tpInsc","type":"number","value":1},{"name":"nrInsc","type":"number","value":12345678}]},{"node":"ideTrabalhador","type":"object","children":[{"name":"cpfTrab","type":"number","value":3313635857}]},{"node":"dmDev","type":"object","children":[{"name":"ideDmDev","type":"string","value":"DEMONSTR0365A32"},{"name":"codCateg","type":"number","value":101}]},{"node":"infoPerApur","type":"object","children":[]},{"node":"ideEstabLot","type":"object","children":[{"name":"tpInsc","type":"number","value":1},{"name":"nrInsc","type":"number","value":12345678010158},{"name":"codLotacao","type":"string","value":"SEDEMONSTR00000000000000000001"}]},{"node":"remunPerApur","type":"object","children":[{"name":"matricula","type":"string","value":"SEDEMONSTR00000000000000000017"}]},{"node":"itensRemun","type":"array","children":[{"name":"codRubr","type":"string"},{"name":"ideTabRubr","type":"number"},{"name":"qtdRubr","type":"number"},{"name":"vrRubr","type":"number"},{"name":"indApurIR","type":"number"}],"values":[{"codRubr":"SEDEMONSTR00000000000000000034","ideTabRubr":941,"qtdRubr":183.33,"vrRubr":1304.17,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000035","ideTabRubr":941,"qtdRubr":36.67,"vrRubr":260.83,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000037","ideTabRubr":941,"vrRubr":135.21,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000032","ideTabRubr":941,"qtdRubr":9,"vrRubr":133.93,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000033","ideTabRubr":941,"vrRubr":125.2,"indApurIR":0}]},{"node":"infoAgNocivo","type":"object","children":[{"name":"grauExp","type":"number","value":1}]}]
+}
+
+
+### @name schema_builk
+POST http://{{base_url}}/schemas/builk
+Content-Type: application/json
+
+{
+  "leiaute_id": "36401fb4-84ab-4400-a01e-ca8be56e1fb2",
+  "nodes": [{"node":"?xml","type":"object","children":[{"name":"@_version","type":"string","value":"1.0"},{"name":"@_encoding","type":"string","value":"UTF-8"}]},{"node":"eSocial","type":"object","children":[{"name":"@_xmlns","type":"string","value":"http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_00_00"}]},{"node":"evtRemun","type":"object","children":[{"name":"@_Id","type":"string","value":"ID1123456780000002023022215193900020"}]},{"node":"ideEvento","type":"object","children":[{"name":"indRetif","type":"number","value":1},{"name":"indApuracao","type":"number","value":1},{"name":"perApur","type":"string","value":"2023-01"},{"name":"tpAmb","type":"number","value":2},{"name":"procEmi","type":"number","value":1},{"name":"verProc","type":"string","value":"SENIORGPFP581369"}]},{"node":"ideEmpregador","type":"object","children":[{"name":"tpInsc","type":"number","value":1},{"name":"nrInsc","type":"number","value":12345678}]},{"node":"ideTrabalhador","type":"object","children":[{"name":"cpfTrab","type":"number","value":3313635857}]},{"node":"dmDev","type":"object","children":[{"name":"ideDmDev","type":"string","value":"DEMONSTR0365A32"},{"name":"codCateg","type":"number","value":101}]},{"node":"infoPerApur","type":"object","children":[]},{"node":"ideEstabLot","type":"object","children":[{"name":"tpInsc","type":"number","value":1},{"name":"nrInsc","type":"number","value":12345678010158},{"name":"codLotacao","type":"string","value":"SEDEMONSTR00000000000000000001"}]},{"node":"remunPerApur","type":"object","children":[{"name":"matricula","type":"string","value":"SEDEMONSTR00000000000000000017"}]},{"node":"itensRemun","type":"array","children":[{"name":"codRubr","type":"string"},{"name":"ideTabRubr","type":"number"},{"name":"qtdRubr","type":"number"},{"name":"vrRubr","type":"number"},{"name":"indApurIR","type":"number"}],"values":[{"codRubr":"SEDEMONSTR00000000000000000034","ideTabRubr":941,"qtdRubr":183.33,"vrRubr":1304.17,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000035","ideTabRubr":941,"qtdRubr":36.67,"vrRubr":260.83,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000037","ideTabRubr":941,"vrRubr":135.21,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000032","ideTabRubr":941,"qtdRubr":9,"vrRubr":133.93,"indApurIR":0},{"codRubr":"SEDEMONSTR00000000000000000033","ideTabRubr":941,"vrRubr":125.2,"indApurIR":0}]},{"node":"infoAgNocivo","type":"object","children":[{"name":"grauExp","type":"number","value":1}]}]
+}
+
+
+
+### @name create_leiaute
+POST http://{{base_url}}/leiautes
+Content-Type: application/json
+
+{
+  "name": "S1300",
+  "prefix": "S1300",
+  "version_id": "3336e85c-7601-46b0-9efd-06799bb342dd",
+  "description": ""
+}
+
+
+### @name paginate_leiaute
+GET http://{{base_url}}/leiautes?page=1&limit=10
+
+### @name active_list_leiaute
+GET http://{{base_url}}/leiautes/active-list
+
+### @name show_leiaute
+GET http://{{base_url}}/leiautes/7d545ba9-62aa-4492-a0f6-9081a5a95f12
+
+### @name toggle_active_leiaute
+PATCH  http://{{base_url}}/leiautes/7d545ba9-62aa-4492-a0f6-9081a5a95f12/toggle-active
+
+### @name auth_register
+POST http://{{base_url}}/auth/register
+Content-Type: application/json
+
+{
+  "password": "123123",
+  "email": "admin@mail.com"
+}
+
+### @name auth_login
+POST http://{{base_url}}/auth/login
+Content-Type: application/json
+
+{
+  "password": "123123",
+  "email": "admin@mail.com"
+}

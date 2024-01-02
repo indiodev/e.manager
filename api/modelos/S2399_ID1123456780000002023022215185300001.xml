@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtTSVTermino/v_S_01_00_00">
+  <evtTSVTermino Id="ID1123456780000002023022215185300001">
+    <ideEvento>
+      <indRetif>1</indRetif>
+      <tpAmb>2</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>SENIORGPFP581369</verProc>
+    </ideEvento>
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <ideTrabSemVinculo>
+      <cpfTrab>02641559986</cpfTrab>
+      <matricula>SEDEMONSTR00000000000000000002</matricula>
+    </ideTrabSemVinculo>
+    <infoTSVTermino>
+      <dtTerm>2023-02-01</dtTerm>
+    </infoTSVTermino>
+  </evtTSVTermino>
+</eSocial>
