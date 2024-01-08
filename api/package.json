@@ -61,6 +61,7 @@
     "@adonisjs/lucid": "^18.4.2",
     "@adonisjs/repl": "^3.1.11",
     "fast-xml-parser": "^4.3.2",
+    "json-2-csv": "^5.0.1",
     "luxon": "^3.4.4",
     "pg": "^8.11.3",
     "phc-bcrypt": "^1.0.8",

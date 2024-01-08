@@ -17,8 +17,8 @@ function recursiveMap(obj: any, queue: Queue<Node>) {
 
       if (isObject(value) && !isNull(value) && !isArray(value)) {
         const item: Node = {
-          node: key,
-          type: 'object',
+          name: key,
+          type: 'unique',
           children: [],
         }
 
@@ -41,8 +41,8 @@ function recursiveMap(obj: any, queue: Queue<Node>) {
         recursiveMap(value, queue)
       } else if (isObject(value) && !isNull(value) && isArray(value)) {
         const item: Node = {
-          node: key,
-          type: 'array',
+          name: key,
+          type: 'multiple',
           children: [],
           values: [],
         }

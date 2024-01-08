@@ -1,8 +1,8 @@
 import { Child } from './child'
 
 export interface Node {
-  node: string
+  name: string
   children: Child[]
-  type: 'object' | 'array'
+  type: 'unique' | 'multiple'
   values?: { [key: string]: number | string }[]
 }
