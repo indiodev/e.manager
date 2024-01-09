@@ -11,10 +11,7 @@ export const AuthController = {
   register: async ({ request, auth, response }: HttpContextContract): Promise<void> => {
     const { email, password } = request.only(['email', 'password'])
 
-    const exist_user = await User.query()
-      .where('email', email)
-      .andWhere('password', password)
-      .first()
+    const exist_user = await User.query().where('email', email).first()
 
     if (exist_user) return response.conflict('User already exists.')
 

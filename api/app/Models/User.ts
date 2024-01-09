@@ -3,6 +3,9 @@ import { beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
 import BaseUuid from './base-uuid'
 
 export default class User extends BaseUuid {
+  @column({ isPrimary: true })
+  public id: string
+
   @column()
   public email: string
 
