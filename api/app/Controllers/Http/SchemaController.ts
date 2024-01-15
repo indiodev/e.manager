@@ -47,6 +47,7 @@ export const SchemaController = {
 
   mapping: async ({ request, response }: HttpContextContract): Promise<void> => {
     const xml_files = request.files('xml')
+    const { prefix } = request.only(['prefix'])
 
     if (!(xml_files.length > 0)) return response.badRequest('File not found')
 
@@ -58,8 +59,13 @@ export const SchemaController = {
       })
 
       const queue = mapNodeObjectToQueue(parser.parse(data))
+      const nodes = collectNodesAndChildrenFromQueue(queue)
 
-      return { nodes: collectNodesAndChildrenFromQueue(queue) }
+      return {
+        prefix,
+        e_social_id: nodes.find((node) => node.name.includes('evt'))?.children[0].value,
+        nodes,
+      }
     })
 
     const result = await Promise.all(_promise)
@@ -68,10 +74,14 @@ export const SchemaController = {
   },
 
   paginate: async ({ request, response }: HttpContextContract): Promise<void> => {
-    const { page, limit } = request.qs()
+    const { page = 1, limit = 15, search = '' } = request.qs()
+
     const schemas = await Leiaute.query()
       .select(['e_social_id', 'prefix', 'created_at', 'updated_at'])
-      .paginate(page, limit)
+      .if(search, (q) =>
+        q.whereILike('e_social_id', `%${search}%`).orWhereILike('prefix', `%${search}%`)
+      )
+      .paginate(Number(page), Number(limit))
     return response.ok(schemas)
   },
 
@@ -92,22 +102,6 @@ export const SchemaController = {
 
     if (!schema) return response.notFound('Schema data not found')
 
-    // const data = json2csv(
-    //   schema.nodes
-    //     .filter(({ name }) => !name.includes('?xml') && !name.includes('eSocial'))
-    //     .reduce((acc, { children, name, type, values }) => {
-    //       if (type === 'unique') {
-    //         for (const child of children) {
-    //           acc[`${name}_${child.name}`] = child.value
-    //         }
-    //       }
-    //       return acc
-    //     }, {} as any),
-    //   {
-    //     useDateIso8601Format: true,
-    //   }
-    // )
-
     let data: string[] = []
 
     for (const { name, children, type, values } of schema.nodes.filter(
@@ -122,7 +116,7 @@ export const SchemaController = {
             .join('')}`
         )
 
-      if (type === 'multiple')
+      if (type === 'multiple' && values)
         for (const value of values) {
           data.push(
             `${name.toUpperCase()}\n${Object.entries(value)

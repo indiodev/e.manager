@@ -14,7 +14,7 @@ file
 Content-Disposition: form-data; name="file"; filename="teste.xml"
 Content-Type: text/xml
 
-< ./modelos/teste.xml
+< ../modelos/teste.xml
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### @name schema_paginate

@@ -10,13 +10,13 @@ import { Router } from './routes';
 import './globals.css';
 export function App(): ReactElement {
 	return (
-		<ThemeProvider defaultTheme="dark">
-			<QueryClientProvider client={QueryClient}>
+		<QueryClientProvider client={QueryClient}>
+			<ThemeProvider defaultTheme="dark">
+				<Toaster />
 				<BrowserRouter>
 					<Router />
 				</BrowserRouter>
-			</QueryClientProvider>
-			<Toaster />
-		</ThemeProvider>
+			</ThemeProvider>
+		</QueryClientProvider>
 	);
 }

@@ -2,14 +2,16 @@ import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	DotsHorizontalIcon,
+	DoubleArrowLeftIcon,
+	DoubleArrowRightIcon,
 } from '@radix-ui/react-icons';
 import type { ComponentProps, ReactElement } from 'react';
 import { forwardRef } from 'react';
 
-import { cn } from '@/src/lib';
-
 import type { ButtonProps } from './button';
 import { buttonVariants } from './button';
+
+import { cn } from '@/src/lib';
 
 const Pagination = ({
 	className,
@@ -87,6 +89,38 @@ const PaginationPrevious = ({
 );
 PaginationPrevious.displayName = 'PaginationPrevious';
 
+const PaginationFirst = ({
+	className,
+	...props
+}: ComponentProps<typeof PaginationLink>): ReactElement => (
+	<PaginationLink
+		aria-label="Go to first page"
+		size="icon"
+		className={cn('gap-1', className)}
+		{...props}
+	>
+		<DoubleArrowLeftIcon className="h-4 w-4" />
+	</PaginationLink>
+);
+
+PaginationFirst.displayName = 'PaginationFirst';
+
+const PaginationLast = ({
+	className,
+	...props
+}: ComponentProps<typeof PaginationLink>): ReactElement => (
+	<PaginationLink
+		aria-label="Go to first page"
+		size="icon"
+		className={cn('gap-1', className)}
+		{...props}
+	>
+		<DoubleArrowRightIcon className="h-4 w-4" />
+	</PaginationLink>
+);
+
+PaginationLast.displayName = 'PaginationLast';
+
 const PaginationNext = ({
 	className,
 	...props
@@ -119,7 +153,9 @@ export {
 	Pagination,
 	PaginationContent,
 	PaginationEllipsis,
+	PaginationFirst,
 	PaginationItem,
+	PaginationLast,
 	PaginationLink,
 	PaginationNext,
 	PaginationPrevious,

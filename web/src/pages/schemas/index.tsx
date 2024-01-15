@@ -1,99 +1,160 @@
-import { MagnifyingGlass } from '@phosphor-icons/react';
-import { EyeOpenIcon } from '@radix-ui/react-icons';
-import type { ReactElement } from 'react';
+import {
+	CircleIcon,
+	MagnifyingGlassIcon,
+	UploadIcon,
+} from '@radix-ui/react-icons';
+import { useRef, type ReactElement } from 'react';
+
+import { ImportFormSheet } from './import-form-sheet';
+import { Table } from './table';
 
 import {
 	Button,
 	Input,
 	Pagination,
 	PaginationContent,
-	PaginationEllipsis,
+	PaginationFirst,
 	PaginationItem,
-	PaginationLink,
+	PaginationLast,
 	PaginationNext,
 	PaginationPrevious,
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
+	Sheet,
+	SheetTrigger,
 } from '@/src/components';
-import { useSchemaPaginateQuery } from '@/src/hooks';
+import { useParams, useSchemaPaginateQuery } from '@/src/hooks';
 
 export function Schemas(): ReactElement {
-	const { data: schemas, isSuccess } = useSchemaPaginateQuery({
-		params: { limit: 15, page: 1 },
+	const searchInputRef = useRef<HTMLInputElement>(null);
+	const searchButtonRef = useRef<HTMLButtonElement>(null);
+
+	const { setParams, params } = useParams<{
+		page: number;
+		limit: number;
+		search: string | undefined;
+	}>({
+		page: 1,
+		limit: 10,
+		search: undefined,
+	});
+
+	const {
+		data: schemas,
+		isSuccess,
+		isLoading,
+	} = useSchemaPaginateQuery({
+		params,
 	});
 
 	return (
-		<div className="container flex flex-col space-y-8">
-			<div className="flex space-x-2">
-				<div className="flex relative w-full">
-					<Input
-						type="text"
-						placeholder="Pesquise por evento..."
-						className="w-full absolute left-0 right-0"
-					/>
-					<Button className="text-white font-bold absolute right-0 bg-transparent hover:bg-primary-foreground">
-						<MagnifyingGlass size={18} />
-					</Button>
+		<div className="container flex flex-col space-y-8 overflow-x-hidden">
+			<Sheet>
+				<div className="flex space-x-2">
+					<div className="flex relative w-full">
+						<Input
+							type="text"
+							placeholder="Pesquise por evento..."
+							className="w-full absolute left-0 right-0"
+							ref={searchInputRef}
+							onKeyDown={(event) => {
+								if (
+									event.currentTarget.value === '' ||
+									searchInputRef.current?.value === ''
+								) {
+									setParams('search', undefined);
+									return;
+								}
+
+								if (event.key === 'Enter') {
+									searchButtonRef.current?.click();
+									return;
+								}
+							}}
+						/>
+						<Button
+							onClick={() => {
+								if (searchInputRef.current?.value) {
+									setParams('search', searchInputRef.current.value);
+									return;
+								}
+							}}
+							ref={searchButtonRef}
+							className="text-white font-bold absolute right-0 bg-transparent hover:bg-primary-foreground focus:bg-primary-foreground"
+						>
+							{!isLoading && <MagnifyingGlassIcon />}
+							{isLoading && <CircleIcon />}
+						</Button>
+					</div>
+
+					<SheetTrigger asChild>
+						<Button className="text-white font-bold space-x-2">
+							<UploadIcon />
+							<span>Importar</span>
+						</Button>
+					</SheetTrigger>
 				</div>
 
-				<Button className="text-white font-bold">Importar</Button>
-			</div>
+				{isSuccess && !params.search && !(schemas.data.length > 0) && (
+					<h2>Nenhum registro encontrado.</h2>
+				)}
 
-			{isSuccess && (
-				<section className="rounded-sm">
-					<Table>
-						<TableHeader>
-							<TableRow>
-								<TableHead className="font-semibold">ESocial ID</TableHead>
-								<TableHead className="font-semibold">Prefixo</TableHead>
-								<TableHead className="font-semibold">
-									Data de Importação
-								</TableHead>
-								<TableHead className="w-20"></TableHead>
-							</TableRow>
-						</TableHeader>
-						<TableBody>
-							{schemas.data.map((schema) => (
-								<TableRow key={schema.e_social_id}>
-									<TableCell>{schema.e_social_id}</TableCell>
-									<TableCell>{schema.prefix}</TableCell>
-									<TableCell>
-										{new Intl.DateTimeFormat('pt-BR', {
-											dateStyle: 'long',
-										}).format(new Date(schema.created_at))}
-									</TableCell>
-									<TableCell>
-										<Button className="bg-transparent hover:bg-primary-foreground text-white border border-transparent hover:border-white">
-											<EyeOpenIcon />
-										</Button>
-									</TableCell>
-								</TableRow>
-							))}
-						</TableBody>
-					</Table>
-				</section>
-			)}
+				{isSuccess && params.search && !(schemas.data.length > 0) && (
+					<h2>
+						Nenhum registro encontrado para{' '}
+						<strong>
+							<em> {searchInputRef.current?.value}.</em>
+						</strong>
+					</h2>
+				)}
 
-			<Pagination>
-				<PaginationContent>
-					<PaginationItem>
-						<PaginationPrevious href="#" />
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationLink href="#">1</PaginationLink>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationEllipsis />
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationNext href="#" />
-					</PaginationItem>
-				</PaginationContent>
-			</Pagination>
+				{isSuccess && schemas?.meta.total > schemas?.meta.per_page && (
+					<Pagination className="justify-between">
+						<span className="text-foreground text-sm">
+							<em>
+								<strong>
+									Exibindo {schemas.meta.current_page} de{' '}
+									{schemas.meta.last_page} página(s)
+								</strong>
+							</em>
+						</span>
+						<PaginationContent>
+							<PaginationItem>
+								<PaginationFirst onClick={() => setParams('page', 1)} />
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationPrevious
+									onClick={() =>
+										params.page > 1 && setParams('page', params.page - 1)
+									}
+								/>
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationNext
+									onClick={() =>
+										params.page < schemas?.meta.last_page &&
+										setParams('page', params.page + 1)
+									}
+								/>
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationLast
+									onClick={() => setParams('page', schemas.meta.last_page)}
+								/>
+							</PaginationItem>
+						</PaginationContent>
+					</Pagination>
+				)}
+
+				{isSuccess && schemas.data.length > 0 && (
+					<section className="rounded-sm">
+						<Table
+							data={schemas.data}
+							columns={['ESocial ID', 'Prefixo', 'Data de Extração', '']}
+						/>
+					</section>
+				)}
+
+				<ImportFormSheet />
+			</Sheet>
 		</div>
 	);
 }

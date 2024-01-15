@@ -16,7 +16,7 @@ export function useSchemaPaginateQuery({
 	params,
 }: Props): UseQueryResult<Paginate<Schema>, Error> {
 	return useQuery({
-		queryKey: ['SCHEMA_PAGINATE', params],
+		queryKey: ['SCHEMA_PAGINATE', { ...params }],
 		queryFn: () => fetcher(params),
 	});
 }
